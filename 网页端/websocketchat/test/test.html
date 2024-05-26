@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Bubble</title>
+    <style>
+        .bubble {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle at 72% 28%, #fff 3px, #ff7edf 8%, #5b5b5b, #aad7f9 100%);
+            box-shadow: inset 0 0 6px #fff,
+            inset 3px 0 6px #eaf5fc,
+            inset 2px -2px 10px #efcde6,
+            inset 0 0 60px #f9f6de,
+            0 0 20px #fff;
+        }
+        @keyframes myMove {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-150%); /* 根据需要调整 */
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div id="bubble-container"></div>
+
+<script >
+    function createBubble() {
+        // 获取容器元素
+        const container = document.getElementById('bubble-container');
+
+        // 创建气泡元素
+        const bubble = document.createElement('span');
+        bubble.classList.add('bubble');
+
+        // 设置气泡的大小
+        const size = Math.floor(Math.random() * 50) + 50; // 随机大小从50到100
+        bubble.style.width = size + 'px';
+        bubble.style.height = size + 'px';
+
+        // 设置气泡的随机位置
+        bubble.style.left = Math.floor(Math.random() * (window.innerWidth - size)) + 'px';
+        bubble.style.bottom = '10px'; // 初始位置在容器底部
+
+        // 添加到容器中
+        container.appendChild(bubble);
+
+        // 动画完成后移除气泡
+        bubble.addEventListener('animationend', () => {
+            bubble.remove();
+        });
+
+        // 启动动画
+        bubble.style.animation = 'myMove 4s linear infinite';
+    }
+
+    // 调用函数创建气泡
+    createBubble();
+
+</script>
+</body>
+</html>

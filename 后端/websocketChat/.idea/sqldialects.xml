@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SqlDialectMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/aa0e5fd3-842c-415d-92e0-a05c0663d13a/console.sql" dialect="PostgreSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/websocketchat/websocketchat/mapper/UserMapper.java" dialect="GenericSQL" />
+    <file url="PROJECT" dialect="PostgreSQL" />
+  </component>
+</project>

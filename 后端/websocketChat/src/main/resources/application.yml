@@ -1,0 +1,45 @@
+
+spring:
+  data:
+    redis:
+      host:
+      port: 6379
+      password:
+  application:
+    name: user-service
+  datasource:
+    driver-class-name:
+    url:
+    username:
+    password:
+
+#    邮箱服务
+  mail:
+    host: smtp.163.com
+    port: 25
+    username:
+    password:
+    protocol: smtp
+    properties:
+      mail:
+        debug: true
+#        smtp:
+#          ssl:
+#            trust: smtp.163.com
+#          auth: true
+#          starttls:
+#            enable: true
+#            required: true
+
+
+logging:
+  level:
+    org:
+      springframework:
+        web=DEBUG:
+server:
+  port: 8088
+
+
+
+

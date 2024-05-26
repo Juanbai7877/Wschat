@@ -2,23 +2,23 @@
 spring:
   data:
     redis:
-      host: 192.168.126.128
-      port: 6379
-      password: pmos@123
+      host: 
+      port: 
+      password: 
   application:
     name: user-service
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://192.168.126.128:8888/wchat
-    username: gaussdb
-    password: Enmo@123
+    url: 
+    username: 
+    password:
 
 #    邮箱服务
   mail:
     host: smtp.163.com
     port: 25
-    username: websocketchat@163.com
-    password: SSWNEWLCZUZBMRBJ
+    username: 
+    password: 
     protocol: smtp
     properties:
       mail:
@@ -40,12 +40,6 @@ logging:
 server:
   port: 8088
 
-aliyun:
-  sms:
-    sms-access-key-id: LTAI5tGAJMEJfw3oyAgRtqvq
-    sms-access-key-secret: dbh5H3mCCWvGfRACdC0nHSEDkIfWAn
-    sms-endpoint: dysmsapi.aliyuncs.com
-    sms-template-code: SMS_154950909
-    sms-sign-name: 阿里云短信测试
+
 
 

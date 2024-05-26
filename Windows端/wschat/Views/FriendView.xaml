@@ -1,0 +1,185 @@
+﻿<UserControl x:Class="wschat.Views.FriendView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:wschat.Views"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:cv="clr-namespace:wschat.Common.Converters"
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <cv:IntToBoolConveter x:Key="intToBool"/>
+        <cv:IntToVisibilityConveter x:Key="IntToVisibility"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="2" Margin="0,10">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <Border
+                Margin="10,0"
+                Background="#BEBEBE"
+                CornerRadius="5"
+                Opacity="0.1" />
+
+                <DockPanel Margin="10,0">
+                    <DockPanel
+                    Margin="10,5"
+                    DockPanel.Dock="Top"
+                    LastChildFill="False">
+                        <TextBlock
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Text="好友列表" />
+                    </DockPanel>
+
+                    <ListBox x:Name="friendsList"
+                    HorizontalContentAlignment="Stretch"
+                    ItemsSource="{Binding Friends}"
+                    ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                        <i:Interaction.Triggers>
+                            <i:EventTrigger EventName="MouseDoubleClick">
+                                <i:InvokeCommandAction Command="{Binding ChatCommand}" 
+                                                       CommandParameter="{Binding SelectedItem, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ListBox}}" />
+                            </i:EventTrigger>
+                        </i:Interaction.Triggers>
+
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+
+                                <DockPanel MaxHeight="80" LastChildFill="False">
+                                    <Button DockPanel.Dock="Right"
+                                                  Content="删除好友"
+                                              Command="{Binding DataContext.RemoveFriendCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl}}"
+                                              CommandParameter="{Binding}"
+                                              />
+                                    <StackPanel>
+                                        <TextBlock
+                                        FontSize="20"
+                                        FontWeight="Bold"
+                                         >
+                                            <Run Text="昵称：" /> <!-- 自定义数据 -->
+                                            <Run Text="{Binding NickName}" /><!-- 绑定数据后跟一个加号 -->
+                                        </TextBlock>
+                                        <TextBlock
+                                        FontSize="14"
+                                        FontWeight="Bold"
+                                            Opacity ="0.5"
+                                            >
+                                            <Run Text="用户名：" /> <!-- 自定义数据 -->
+                                            <Run Text="{Binding UserName}" /><!-- 绑定数据后跟一个加号 -->
+                                        </TextBlock>
+                                    </StackPanel>
+                                </DockPanel>
+
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+
+                    </ListBox>
+                </DockPanel>
+            </Grid>
+
+
+            <Grid Grid.Column="1" Width="auto">
+                <md:DialogHost>
+                    <md:DrawerHost >
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="21*" />
+                                <RowDefinition Height="173*"/>
+                            </Grid.RowDefinitions>
+
+                            <DockPanel Margin="15,0,0,0">
+                                <StackPanel Margin="15,0,0,0" Orientation="Horizontal">
+                                <TextBox Text="{Binding Search,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                                        Width="280"
+                                        VerticalAlignment="Center"
+                                        md:TextFieldAssist.HasClearButton="True" 
+                                        md:HintAssist.Hint="请输入ID、用户名或昵称">
+                                    <TextBox.InputBindings>
+                                        <KeyBinding Key="Enter" Command="{Binding ExecuteCommand}"
+                                        CommandParameter="搜索好友"  />
+                                    </TextBox.InputBindings>
+                                </TextBox>
+                                <Button
+                                    Margin="10,5"
+                                    Width="100"
+                                    Command="{Binding ExecuteCommand}"
+                                    CommandParameter="搜索好友"
+                                    Content="搜索好友" 
+                                    />
+                                </StackPanel>
+                            </DockPanel>
+
+                            <StackPanel Grid.Row="2" VerticalAlignment="Top"
+                             Margin="0,71,0,0"
+                            >
+                                <Image Source="/Images/wind.png" Width="120" Height="120"/>
+                                <TextBlock  Margin="0,10" FontSize="18"
+                        HorizontalAlignment="Center"
+                        Text="尝试添加好友。"/>
+                            </StackPanel>
+
+
+                            <ScrollViewer Grid.Row="1" Grid.RowSpan="2">
+                                <ListBox x:Name="searchGroups"
+                    HorizontalContentAlignment="Stretch"
+                    ItemsSource="{Binding SearchFriends}"
+                    >
+
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border Background="#DEB887"    
+                                            CornerRadius="3">
+                                                <DockPanel Height="auto">
+                                                    <Button DockPanel.Dock="Right"
+                                                  Content="添加好友"
+                                              Command="{Binding DataContext.AddFriendCommand, RelativeSource={RelativeSource Mode=FindAncestor,AncestorType=ItemsControl}}"
+                                              CommandParameter="{Binding}"
+                                                            Margin="8"
+                                              />
+                                                    <StackPanel>
+                                                        <TextBlock
+                                                            FontSize="20"
+                                                            FontWeight="Bold"
+                                                            Margin="5"
+                                                             >
+                                            <Run Text="昵称：" /> <!-- 自定义数据 -->
+                                            <Run Text="{Binding NickName}" /><!-- 绑定数据后跟一个加号 -->
+                                                        </TextBlock>
+                                                        <TextBlock
+                                                            FontSize="16"
+                                                            FontWeight="Bold"
+                                                            Opacity ="0.8"
+                                                            Margin="5"
+                                                                >
+                                                                <Run Text="用户名：" /> <!-- 自定义数据 其实username-->
+                                                                <Run Text="{Binding UserName}" /><!-- 绑定数据后跟一个加号 -->
+                                                        </TextBlock>
+                                                    </StackPanel>
+                                                </DockPanel>
+                                            </Border>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </ScrollViewer>
+                        </Grid>
+                    </md:DrawerHost>
+                </md:DialogHost>
+            </Grid>
+        </Grid>
+
+    </Grid>
+</UserControl>

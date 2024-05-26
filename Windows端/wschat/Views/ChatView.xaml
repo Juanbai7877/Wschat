@@ -1,0 +1,187 @@
+﻿<UserControl x:Class="wschat.Views.ChatView"
+              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:wschat.Views"
+    xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:cv="clr-namespace:wschat.Common.Converters"
+    xmlns:com="clr-namespace:wschat.Common"
+
+    d:DesignHeight="450"
+    d:DesignWidth="800"
+    mc:Ignorable="d">
+    <UserControl.Resources>
+        <cv:IntToBoolConveter x:Key="intToBool"/>
+        <cv:IntToVisibilityConveter x:Key="IntToVisibility"/>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="450" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="180"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="1">
+            <DockPanel>
+                <StackPanel Background="Transparent" Orientation="Horizontal">
+                    <md:PackIcon Margin="15,0" Kind="face" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Background="Transparent" Orientation="Horizontal">
+                    <md:PackIcon Margin="15,0" Kind="Folder" VerticalAlignment="Center"/>
+                </StackPanel>
+                <StackPanel Background="Transparent" Orientation="Horizontal">
+                    <md:PackIcon Margin="15,0" Kind="Message" VerticalAlignment="Center"/>
+                </StackPanel>
+                <DockPanel Background="Transparent"
+                            DockPanel.Dock="Right">
+                    <Button
+                            Margin="10,5"
+                            HorizontalAlignment="Right"
+                                Command="{Binding ExecuteCommand}"
+                            CommandParameter="刷新"
+                            Content="刷新" />
+                </DockPanel>
+            </DockPanel>
+        </Grid>
+
+        <Grid Grid.Row="0">
+            <Border
+                Margin="10,0"
+                Background="#BEBEBE"
+                CornerRadius="5"
+                Opacity="0.1" />
+
+            <DockPanel Margin="10,0"
+                           LastChildFill="False">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    
+                    <DockPanel Grid.Row="0"
+                        Margin="10,10"
+                        DockPanel.Dock="Top"
+                        LastChildFill="True">
+                        <TextBlock
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Text="{Binding TargetNickName}" />
+                    </DockPanel>
+                    <GridSplitter Grid.Row="0" Height="2" 
+                          HorizontalAlignment="Stretch" 
+                          VerticalAlignment="Bottom" 
+                          Margin="0,40,0,0"/>
+
+                    <ListBox x:Name="messagesList"
+                          Margin="0"
+                         Grid.Row="1"
+                        Width="1250"
+                        ItemsSource="{Binding Messages}"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
+                        DockPanel.Dock="Bottom"
+                        HorizontalAlignment="Stretch">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <Border CornerRadius="10"
+                                Padding="8"
+                                Background="DodgerBlue"
+                                BorderThickness="1"
+                                Margin="-5">
+                            <DockPanel Width="auto" LastChildFill="False">
+                                <StackPanel Width="auto">
+                                    <TextBlock
+                                            FontSize="13"
+                                            FontWeight="Bold"
+                                        Opacity ="0.5"
+                                        Width="auto"
+                                             >
+                                                <Run Text="{Binding MessageTime}" /><!-- 绑定数据后跟一个加号 -->
+                                    </TextBlock>
+                                    <TextBlock
+                                            FontSize="16"
+                                            FontWeight="Bold"
+                                                Opacity ="0.5"
+                                        Width="auto"
+                                                >
+                                                <Run Text="{Binding NickName}" /><!-- 绑定数据后跟一个加号 -->
+                                    </TextBlock>
+                                    <TextBlock
+                                            FontSize="18"
+                                            FontWeight="Bold"
+                                        Width="auto"
+                                                >
+                                                <Run Text="{Binding MessageText}" /><!-- 绑定数据后跟一个加号 -->
+                                    </TextBlock>
+                                </StackPanel>
+                            </DockPanel>
+                                </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                    </Grid>
+            </DockPanel>
+
+        </Grid>
+
+        <Grid Grid.Row="2"  >
+
+            <Border
+                Margin="10,0,10,5"
+                Background="#BEBEBE"
+                CornerRadius="5"
+                Opacity="0.1" >
+
+            </Border>
+            <StackPanel>
+                <TextBox Margin="10,0,10,0"
+                 Opacity="1"
+                 Text="{Binding SendMessages,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"
+                 VerticalContentAlignment="Top"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 Height="135"
+                 VerticalScrollBarVisibility="Auto"
+                    IsTabStop="False"
+                         BorderBrush="{x:Null}"
+                         BorderThickness="0">
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding ExecuteCommand}"
+                                        CommandParameter="发送"  />
+                    </TextBox.InputBindings>
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Background="{TemplateBinding Background}"
+                    BorderBrush="{TemplateBinding BorderBrush}"
+                    BorderThickness="{TemplateBinding BorderThickness}">
+                                <ScrollViewer x:Name="PART_ContentHost" />
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+                </TextBox>
+                <Button
+                            Margin="0,0,30,0"
+                            HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom"
+                                Command="{Binding ExecuteCommand}"
+                            CommandParameter="发送"
+                            Content="发送" >
+                    <Button.Background>
+                        <SolidColorBrush Color="Gray" Opacity="0.25" />
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+
+
+        </Grid>
+
+
+
+
+
+
+
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>wschat</id>
+    <version>1.0.0</version>
+    <authors>wschat</authors>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework="net6.0-windows7.0">
+        <dependency id="wschat.Shared" version="1.0.0" exclude="Build,Analyzers" />
+        <dependency id="MaterialDesignThemes" version="4.1.0" exclude="Build,Analyzers" />
+        <dependency id="Newtonsoft.Json" version="13.0.1" exclude="Build,Analyzers" />
+        <dependency id="Prism.DryIoc" version="8.1.97" exclude="Build,Analyzers" />
+        <dependency id="RestSharp" version="106.12.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net6.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App.WPF" />
+      </group>
+    </frameworkReferences>
+  </metadata>
+  <files>
+    <file src="C:\Users\17877\Desktop\作业\windows\wschat\bin\Debug\net6.0-windows\wschat.runtimeconfig.json" target="lib\net6.0-windows7.0\wschat.runtimeconfig.json" />
+    <file src="C:\Users\17877\Desktop\作业\windows\wschat\bin\Debug\net6.0-windows\wschat.dll" target="lib\net6.0-windows7.0\wschat.dll" />
+  </files>
+</package>

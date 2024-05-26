@@ -1,0 +1,16 @@
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\wschat.exe
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\wschat.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\wschat.deps.json
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\wschat.runtimeconfig.json
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\wschat.pdb
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\DryIoc.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\MaterialDesignColors.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\MaterialDesignThemes.Wpf.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\Microsoft.Xaml.Behaviors.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\Newtonsoft.Json.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\Prism.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\Prism.DryIoc.Wpf.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\Prism.Wpf.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\RestSharp.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\wschat.Shared.dll
+C:\Users\17877\Desktop\作业\windows\wschat\bin\Release\net6.0-windows\publish\wschat.Shared.pdb

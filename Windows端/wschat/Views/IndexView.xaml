@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="wschat.Views.IndexView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wschat.Views" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid Grid.Row="1">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Images/background.jpg"/>
+        </Grid.Background>
+        <DockPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="50">
+                                 <materialDesign:PackIcon Kind="Forum" Foreground="Black" Width="100" Height="100"/>
+
+            </TextBlock>
+
+            <StackPanel >
+                <TextBlock Text="   欢迎进入WSCHAT聊天系统" FontSize="50" Foreground="White" Height="150"></TextBlock>
+                <TextBlock Text="         在这你可以畅所欲言" FontSize="50" Foreground="White" Height="80" RenderTransformOrigin="0.5,0.5">
+                    <TextBlock.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform AngleX="1.066"/>
+                            <RotateTransform/>
+                            <TranslateTransform X="0.781"/>
+                        </TransformGroup>
+                    </TextBlock.RenderTransform>
+                </TextBlock>
+            </StackPanel>
+        </DockPanel>
+
+    </Grid>
+</UserControl>

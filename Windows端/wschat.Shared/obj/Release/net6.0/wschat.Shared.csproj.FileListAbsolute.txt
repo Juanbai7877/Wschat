@@ -1,0 +1,12 @@
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\bin\Release\net6.0\wschat.Shared.deps.json
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\bin\Release\net6.0\wschat.Shared.dll
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\bin\Release\net6.0\wschat.Shared.pdb
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\wschat.Shared.csproj.AssemblyReference.cache
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\wschat.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\wschat.Shared.AssemblyInfoInputs.cache
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\wschat.Shared.AssemblyInfo.cs
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\wschat.Shared.csproj.CoreCompileInputs.cache
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\wschat.Shared.dll
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\refint\wschat.Shared.dll
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\wschat.Shared.pdb
+C:\Users\17877\Desktop\作业\windows\wschat.Shared\obj\Release\net6.0\ref\wschat.Shared.dll

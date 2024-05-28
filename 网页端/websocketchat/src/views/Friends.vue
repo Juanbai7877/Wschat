@@ -2,7 +2,7 @@
 import {
   Edit,
   Delete,
-  Search, Share, Upload,
+  Search, Share, Upload, ChatLineSquare,
 } from '@element-plus/icons-vue'
 import { ref ,onMounted } from 'vue'
 import {useUserInfoStore }  from '@/store/userInfo.js'
@@ -36,7 +36,7 @@ import {
 } from "@/api/group.js";
 import router from "@/router/index.js";
 import {addFriendDirectService, flashFriendService, removeFriendService, searchFriendService} from "@/api/friend.js";
-const showDeleteGroupDialog = (row) => {
+const showDeleteFriendDialog = (row) => {
   //提示用户  确认框
   ElMessageBox.confirm(
       '要删除该好友吗?',
@@ -109,6 +109,13 @@ const searchFriend =async () => {
   searchFriends.value=result.data;
 }
 
+const toLeaveMessage=(row)=>{
+  targetInfoStore.setLeaveMessageName(row.nickName)
+  targetInfoStore.setLeaveMessageId(row.userId)
+  router.push('/leaveMessage')
+
+}
+
 
 
 
@@ -131,7 +138,8 @@ const searchFriend =async () => {
           <el-table-column label="FriendId" prop="userId" class="friendIdStyle"></el-table-column>
           <el-table-column label="操作" width="100">
             <template #default="{ row }">
-              <el-button :icon="Delete" circle plain type="danger" @click="showDeleteGroupDialog(row)"></el-button>
+              <el-button :icon="ChatLineSquare" circle plain @click="toLeaveMessage(row)"></el-button>
+              <el-button :icon="Delete" circle plain type="danger" @click="showDeleteFriendDialog(row)"></el-button>
             </template>
           </el-table-column>
           <template #empty>

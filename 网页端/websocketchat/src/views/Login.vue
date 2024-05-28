@@ -14,6 +14,9 @@ const formRefRegister = ref(null);
 const imgList=ref([Logo1,Logo2])
 //控制注册与登录表单的显示， 默认显示注册
 const preRef=ref('');
+const disabledData = ref(false)
+const codeTimeCnt=ref(-1)
+const codeTime=ref('发送验证码')
 const mySwitch = ()=>{
   if(flag.value){
     preRef.value.style.background='#c9e0ed'
@@ -49,13 +52,13 @@ const register = async () => {
       //registerData是一个响应式对象,如果要获取值,需要.value
       console.log("result.code")
       let result = await userRegisterService(registerData.value);
-       if (result.code === 0) {
-          //成功了
-          alert(result.msg ? result.msg : '注册成功');
-          mySwitch()
+      if (result.code === 0) {
+        //成功了
+        ElMessage.success('注册成功');
+        mySwitch()
       }else{
-          //失败了
-          alert('注册失败')
+        //失败了
+        alert('注册失败')
       }
     }
     else{
@@ -73,6 +76,7 @@ const login = async () => {
       let result = await userLoginService(loginData.value);
       if (result.code === 0) {
         //成功了
+        clearInterval(timer)
         ElMessage.success( '登录成功')
         userInfoStore.setInfo(result.data)
         console.log(userInfoStore.info)
@@ -90,10 +94,13 @@ const login = async () => {
   });
 }
 
+
+
 const sendCode = async ()=>{
   let result = await sendCodeService(registerData.value.email);
   if(result.code===0){
     ElMessage.success(result.message ? result.message : '发送成功')
+    codeTimeCnt.value=60
   }
   else ElMessage.error(result.message ? result.message : '发送失败')
 }
@@ -145,7 +152,22 @@ const rules = {
   ]
 }
 
+const setCodeTime = ()=>{
+  if(codeTimeCnt.value===0){
+    disabledData.value = false
+    codeTime.value="发送验证码"
 
+    return;
+  }else if(codeTimeCnt.value>0){
+    if(codeTimeCnt.value%2===0){
+      codeTime.value=(codeTimeCnt.value/2).toString()
+    }
+    console.log(codeTime.value)
+    console.log(codeTimeCnt.value.toString())
+    disabledData.value = true
+    codeTimeCnt.value--
+  }
+}
 
 
 
@@ -154,7 +176,6 @@ const bubleCreate=()=>{
   // 获取body元素
   const body = document.getElementsByClassName('bigBox')[0]
   // 创建泡泡元素
-  console.log(body)
   // const buble = document.createElement('span')
   const buble = document.createElement('span')
   buble.className='bubble'
@@ -166,7 +187,6 @@ const bubleCreate=()=>{
   buble.style.position='fixed'
   buble.style.left=Math.random()*innerWidth+'px'
 
-  console.log(buble.style)
   // 为body添加buble元素
   body.appendChild(buble)
   // 4s清除一次泡泡
@@ -174,11 +194,11 @@ const bubleCreate=()=>{
     buble.remove()
   },4000)
 }
-setInterval(() => {
+var timer=ref(null)
+timer=setInterval(() => {
   bubleCreate()
-}, 200);
-
-
+  setCodeTime()
+}, 500);
 
 </script>
 
@@ -187,14 +207,13 @@ setInterval(() => {
   <div class="bigbigbox">
     <div class="bigBox">
       <span class="bubble" style="width: 25px; height: 25px; left: 100px;"></span>
-
       <div class="box">
         <!-- 滑动盒子 -->
         <div class="pre-box" ref="preRef">
           <h1>WELCOME</h1>
           <p>To WS chat !</p>
           <div class="img-box">
-            <img src="@/assets/waoku.jpg" alt="">
+            <img src="@/assets/OIP.jpg" alt="">
           </div>
         </div>
         <!-- 注册盒子 -->
@@ -217,15 +236,11 @@ setInterval(() => {
             <el-form-item prop="email">
               <el-input type="text" placeholder="邮箱" v-model="registerData.email" :suffix-icon='Message'/>
             </el-form-item>
-            <el-form-item style="width: auto;height: auto;" prop="code">
-              <el-col :span="11">
-                <el-input type="text" v-model="registerData.code" placeholder="验证码"/>
-              </el-col>
-              <el-col :span="2" style="">
-                <el-button class="button" type="primary" auto-insert-space @click="sendCode">
-                  发送验证码
+            <el-form-item prop="code">
+                <el-input type="text" v-model="registerData.code" placeholder="验证码" style="width: 150px"/>
+                <el-button class="button" type="primary" auto-insert-space @click="sendCode" :disabled="disabledData">
+                  {{ codeTime }}
                 </el-button>
-              </el-col>
             </el-form-item>
           </el-form>
           <!-- 按钮盒子 -->

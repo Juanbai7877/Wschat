@@ -69,7 +69,7 @@ const layoutShow=()=>{
   <el-container class="layout-container">
     <!-- 左侧菜单 -->
     <el-aside width="200px" >
-      <div class="el-aside__logo" >
+      <div style="border:transparent">
         <el-icon style="margin: 20% auto 5% auto;display: block;font-size: 80px">
           <ChatRound @click="layoutShow()"/>
         </el-icon>
@@ -174,10 +174,7 @@ const layoutShow=()=>{
     background-color: beige;
     border-radius: 10px;
     border: gray 1px solid;
-    &__logo {
-      height: 120px;
-      background: url('@/assets/logo.svg') no-repeat center / 120px auto;
-    }
+
 
     .el-menu {
       border-right: none;

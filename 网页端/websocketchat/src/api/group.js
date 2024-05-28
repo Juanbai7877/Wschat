@@ -22,6 +22,7 @@ export const createGroupService = (groupName,userId)=>{
 }
 
 export const getGroupService = (groupId)=>{
-    let querystring="?userId="+groupId;
-    return request.get('/groups/getGroupsList'+querystring);
+    let querystring="?groupName="+groupId;
+    console.log(querystring)
+    return request.get('/groups/searchGroupsByNameOrId'+querystring);
 }

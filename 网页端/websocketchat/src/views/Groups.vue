@@ -133,6 +133,8 @@ const addGroup=async (row) => {
   await flashGroup()
 }
 const searchGroup =async (searchStr) => {
+  console.log(searchStr.value)
+  console.log(searchStr)
   let result = await getGroupService(searchStr);
   console.log(result.data)
   searchGroups.value=result.data;
@@ -147,7 +149,7 @@ const createGroup_fnc=async () => {
   let result = await createGroupService(createGroup.value.groupName,userInfo.userId);
   if(result.code===0){
     ElMessage.success( '创建成功');
-    createGroupFlag=false
+
   }
   else ElMessage.error(result.message ? result.message : '意外错误')
   console.log(result.data)
@@ -170,7 +172,7 @@ const createGroup_fnc=async () => {
         </div>
       </template>
       <el-table class="groupList" :data="groups" style="width: 100%" @row-dblclick="toChat">
-        <el-table-column label="GroupId"  prop="groupId" width="100" type="index"> </el-table-column>
+        <el-table-column label="GroupId"  prop="groupId" width="100"> </el-table-column>
         <el-table-column label="GroupName" prop="groupName"></el-table-column>
         <el-table-column label="GroupOwnerId" prop="groupOwner"></el-table-column>
         <el-table-column label="操作" width="100">
@@ -191,7 +193,7 @@ const createGroup_fnc=async () => {
         <template #footer>
                 <span class="dialog-footer">
                     <el-button @click="createGroupFlag = false">取消</el-button>
-                    <el-button type="primary" @click="createGroup_fnc()"> 确认 </el-button>
+                    <el-button type="primary" @click="createGroup_fnc();createGroupFlag = false"> 确认 </el-button>
                 </span>
         </template>
       </el-dialog>

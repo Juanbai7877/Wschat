@@ -13,13 +13,7 @@ const userInfo=userInfoStore.info
 const targetNameData=ref('we')
 const targetId=ref(-1)
 const leaveMessageList=ref([
-  {
-    fromUserId:userInfo.userId,
-    userId:-1,
-    content:'我真是个大帅哥',
-    messageTime:"11.22",
-    nickName: 'null'
-  }
+
 
 ])
 const leaveMessageData=ref({
@@ -89,8 +83,8 @@ const formatMessageTime=(messageTime)=> {
           <div class="message-list">
             <div v-for="message in leaveMessageList" :key="message.messageTime" style="width: 100%;height: auto;" class="message-item">
               <div v-if="message.fromUserId===userInfo.userId" class="my-message">
-                <div style="display: flex;flex-direction: column;  align-items: end;">
-                  <span class="message-time">{{ message.nickName }}</span>
+                <div style="display: flex;flex-direction: row;  align-items: end;justify-content: space-between">
+                  <span class="message-time" style="color:#00C5CD">{{ message.nickName }}</span>
                   <span class="message-time">{{formatMessageTime(message.messageTime) }}</span>
                 </div>
                 <div class="message-bubble">
@@ -98,12 +92,12 @@ const formatMessageTime=(messageTime)=> {
                 </div>
               </div>
               <div v-else class="other-message">
-                <div style="display: flex;flex-direction: column; /* 昵称在右侧 */">
-                  <span class="message-time">{{ message.nickName }}</span>
+                <div style="display: flex;flex-direction: row; /* 昵称在右侧 */;justify-content: space-between">
+                  <span class="message-time" style="color:#696969">{{ message.nickName }}</span>
                   <span class="message-time">{{ formatMessageTime(message.messageTime) }}</span>
                 </div>
                 <div class="message-bubble">
-                  <span class="message-text">{{ message.messageText }}</span>
+                  <span class="message-text">{{ message.content }}</span>
                 </div>
               </div>
             </div>
@@ -134,6 +128,13 @@ const formatMessageTime=(messageTime)=> {
 .sendButton{
   width: 50px;
 }
+
+.message-time{
+  margin-right: 20px;
+}
+.other-message{
+}
+
 .leave-message{
   display: flex;
   flex-direction: column;
@@ -143,7 +144,16 @@ const formatMessageTime=(messageTime)=> {
   width: 100%;
   height: 100%;
 }
+.message-list{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  overflow-y:scroll;
+  scrollbar-width: none;
+}
 .leave-message-content-main{
+
   margin-top: 50px;
   height: 60%;
 }
@@ -152,7 +162,7 @@ const formatMessageTime=(messageTime)=> {
   flex-direction: column;
   align-items: end;
   position: absolute;
-  top: 95px;
+  top: 115px;
   right: 20px;
 }
 .sendPage{
@@ -182,5 +192,16 @@ const formatMessageTime=(messageTime)=> {
   border-radius: 10px;
   border: 3px solid #ccc;
   padding: 10px;
+  margin-top: 5px;
+  background-color: #E6E6FA;
 }
+
+:deep(.el-textarea__inner){
+  background-color: #edd4dc;
+
+}
+.contentInput0{
+  margin-top: 20px;
+}
+
 </style>

@@ -23,18 +23,12 @@ const userInfoStore = useUserInfoStore();
 const targetInfoStore = useTargetInfoStore();
 const targetInfo=targetInfoStore.info
 const userInfo = userInfoStore.info
-const newMessageList=ref([])
+const newMessageList=ref([
+])
 const messageList=ref([
   {
     "messageId":-1,
     "senderId":99999,
-    "nickName":"wschat助手",
-    "messageText":"欢迎使用wschat，您还未选取一名用户或群组聊天",
-    "messageTime":'2024-05-25T07:15:31.440+00:00',
-  },
-  {
-    "messageId":-1,
-    "senderId":1,
     "nickName":"wschat助手",
     "messageText":"欢迎使用wschat，您还未选取一名用户或群组聊天",
     "messageTime":'2024-05-25T07:15:31.440+00:00',
@@ -57,6 +51,7 @@ const getGroupMessage=async()=>{
   let result=await getGroupsMessageService(userInfo.userId,targetInfo.groupId)
   if(result.code===0){
     newMessageList.value=result.data
+    console.log(newMessageList.value)
     if(messageList.value[0].messageId!==newMessageList.value[0].messageId){
       messageList.value=newMessageList.value
     }
@@ -71,6 +66,7 @@ const  getFriendMessage=async()=>{
   let result=await getPrivateMessageService(userInfo.userId,targetInfo.friendId)
   if(result.code===0){
     newMessageList.value=result.data
+    console.log(newMessageList.value)
     if(messageList.value[0].messageId!==newMessageList.value[0].messageId){
       messageList.value=newMessageList.value
     }
@@ -207,7 +203,9 @@ setInterval(() => {
 
   height: 100%;
 }
-
+.message-text{
+  width: auto;
+}
 
 .inputContainer{
   height: 30%;
@@ -257,10 +255,10 @@ background-color: #2c3e50;
   flex: 1;
   display: flex;
   flex-direction: column-reverse;
-  overflow-y: hidden;
+  overflow: auto;
   width: auto;
   height: 100%;
-  background-color: #efcde6;
+  background-color: #f1daeb;
   border: 0px solid #ebeef5;
   border-radius: 5px;
   padding: 15px;
@@ -273,18 +271,14 @@ background-color: #2c3e50;
   max-width: 70%;
 }
 .my-message .message-bubble {
-  background-color: #00b43c; /* 绿色示例，您可以自定义颜色 */
+  background-color: rgba(46, 17, 65, 0.67); /* 绿色示例，您可以自定义颜色 */
   color: white;
 }
 .other-message .message-bubble {
-  background-color: #fff; /* 通常消息背景色 */
+  background-color: rgba(252, 251, 251, 0.75); /* 通常消息背景色 */
   color: #333;
 }
 
-
-.sendButton {
-  margin-left: 5px;
-}
 
 .my-message {
   height: auto;
@@ -294,14 +288,20 @@ background-color: #2c3e50;
   width: 100%;
   overflow: hidden;
 }
-
-
 /* 其他人的消息 */
 .other-message {
-  align-items: flex-start; /* 如果有头像，头像也会在左侧 */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  width: 100%;
+  overflow: hidden;
 }
 
 
+:deep(.el-textarea__inner){
+  background-color: rgba(152, 227, 238, 0.3);
 
+}
 
 </style>

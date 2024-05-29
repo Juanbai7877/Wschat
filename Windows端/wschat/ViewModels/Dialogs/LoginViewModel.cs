@@ -43,7 +43,7 @@ namespace wschat.ViewModels.Dialogs
                 }
             }
         }
-        public string Title { get; set; } = "ToDo";
+        public string Title { get; set; } = "WsChat";
 
         public event Action<IDialogResult> RequestClose;
 

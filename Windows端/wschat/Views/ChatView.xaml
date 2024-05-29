@@ -15,6 +15,22 @@
     <UserControl.Resources>
         <cv:IntToBoolConveter x:Key="intToBool"/>
         <cv:IntToVisibilityConveter x:Key="IntToVisibility"/>
+        <Style x:Key="DefaultMessageStyle" TargetType="{x:Type Border}">
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="Background" Value="SkyBlue"/>
+        </Style>
+        <!-- Style for messages from the current user -->
+        <Style x:Key="CurrentUserMessageStyle" TargetType="{x:Type Border}"
+           BasedOn="{StaticResource DefaultMessageStyle}">
+            <Style.Triggers>
+                <DataTrigger  Binding="{Binding Sender}" Value="True">
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                    <Setter Property="Background" Value="LightGreen"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+        
+        
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -54,7 +70,7 @@
 
             <DockPanel Margin="10,0"
                            LastChildFill="False">
-                <Grid>
+                <Grid HorizontalAlignment="Stretch">
                     <Grid.RowDefinitions>
                         <RowDefinition Height="auto"></RowDefinition>
                         <RowDefinition></RowDefinition>
@@ -81,43 +97,45 @@
                         ItemsSource="{Binding Messages}"
                         ScrollViewer.VerticalScrollBarVisibility="Auto"
                         DockPanel.Dock="Bottom"
-                        HorizontalAlignment="Stretch">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Border CornerRadius="10"
+                        HorizontalAlignment="Right">
+                    <ListBox.ItemTemplate >
+                        <DataTemplate >
+                                <DockPanel Width="1210">
+                                <Border CornerRadius="10"
                                 Padding="8"
-                                Background="DodgerBlue"
                                 BorderThickness="1"
-                                Margin="-5">
-                            <DockPanel Width="auto" LastChildFill="False">
-                                <StackPanel Width="auto">
-                                    <TextBlock
+                                Margin="-5"
+                                        Style="{StaticResource CurrentUserMessageStyle}">
+                                    <DockPanel Width="auto" LastChildFill="False">
+                                        <StackPanel Width="auto" >
+                                            <TextBlock
                                             FontSize="13"
                                             FontWeight="Bold"
                                         Opacity ="0.5"
                                         Width="auto"
                                              >
                                                 <Run Text="{Binding MessageTime}" /><!-- 绑定数据后跟一个加号 -->
-                                    </TextBlock>
-                                    <TextBlock
+                                            </TextBlock>
+                                            <TextBlock
                                             FontSize="16"
                                             FontWeight="Bold"
                                                 Opacity ="0.5"
                                         Width="auto"
                                                 >
                                                 <Run Text="{Binding NickName}" /><!-- 绑定数据后跟一个加号 -->
-                                    </TextBlock>
-                                    <TextBlock
+                                            </TextBlock>
+                                            <TextBlock
                                             FontSize="18"
                                             FontWeight="Bold"
                                         Width="auto"
                                                 >
                                                 <Run Text="{Binding MessageText}" /><!-- 绑定数据后跟一个加号 -->
-                                    </TextBlock>
-                                </StackPanel>
-                            </DockPanel>
+                                            </TextBlock>
+                                        </StackPanel>
+                                    </DockPanel>
                                 </Border>
-                        </DataTemplate>
+                                </DockPanel>
+                            </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>
                     </Grid>

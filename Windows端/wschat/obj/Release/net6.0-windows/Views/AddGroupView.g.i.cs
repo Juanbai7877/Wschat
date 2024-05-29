@@ -53,7 +53,7 @@ namespace wschat.Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/wschat;V1.0.0.0;component/views/addgroupview.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/wschat;component/views/addgroupview.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Views\AddGroupView.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

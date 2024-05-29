@@ -21,6 +21,7 @@ using wschat.Shared.Dtos;
 namespace wschat.ViewModels
 {
     
+   
     
     public class ChatViewModel : NavigationViewModel, INotifyPropertyChanged
     {
@@ -29,6 +30,14 @@ namespace wschat.ViewModels
         {
             get { return targetNickName; }
             set { targetNickName = value; RaisePropertyChanged(); }
+        }
+
+
+        private long userId = -1;
+        public long UserId
+        {
+            get { return userId; }
+            set { userId = value; RaisePropertyChanged(); }
         }
 
         private ObservableCollection<MsgDto> messages;
@@ -75,7 +84,7 @@ namespace wschat.ViewModels
             this.chatService = provider.Resolve<IChatService>();
             sendMessages = "";
             _aggregator.GetEvent<ChatEvent>().Subscribe(Flesh);
-
+            UserId = AppSession.UserId;
             RefleshMessages();
         }
 
@@ -83,6 +92,7 @@ namespace wschat.ViewModels
         {
             GetMessagesAsync();
             TargetNickName = AppSession.TargetName;
+            UserId= AppSession.UserId;
 
         }
 
@@ -114,6 +124,7 @@ namespace wschat.ViewModels
                         foreach (var item in updateResult.Data)
                         {
                             item.MessageTime = ConvertIsoDateTimeToString(item.MessageTime);
+                            item.Sender = item.SenderId == UserId;
                             messages.Add(item);
 
                         }
@@ -137,6 +148,8 @@ namespace wschat.ViewModels
                         foreach (var item in updateResult.Data)
                         {
                             item.MessageTime = ConvertIsoDateTimeToString(item.MessageTime);
+                            item.Sender = item.SenderId == UserId;
+
                             messages.Add(item);
                             
                         }
@@ -187,6 +200,8 @@ namespace wschat.ViewModels
         public void RefleshMessages()
         {
             GetMessagesAsync();
+            TargetNickName = AppSession.TargetName;
+            UserId = AppSession.UserId;
 
         }
 

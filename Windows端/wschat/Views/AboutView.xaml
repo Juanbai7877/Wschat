@@ -9,6 +9,9 @@
     d:DesignWidth="800"
     mc:Ignorable="d">
     <Grid>
-        <TextBlock FontSize="50" Text="关于作者" />
+        <StackPanel>
+            <TextBlock FontSize="50" Text="关于作品" />
+            <TextBlock FontSize="25" Text="github：https://github.com/Juanbai7877/Wschat/" />
+        </StackPanel>
     </Grid>
 </UserControl>

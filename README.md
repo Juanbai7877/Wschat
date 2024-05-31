@@ -25,7 +25,7 @@ Wschat是一个简易的聊天系统，用户需要登录注册。并且已经�
 
 ### 登录注册：
 
-![img1]([https://github.com/Juanbai7877/Wschat/raw/main/images](https://github.com/Juanbai7877/Wschat/tree/bca6bdd1a820ae090832a1bf270918957a07a9c2/images)\img1.png)
+![img1](https://github.com/Juanbai7877/Wschat/blob/main/images/img1.png)
 
 
 ![img1](C:\Users\17877\Documents\GitHub\Wschat\images\img1.png)

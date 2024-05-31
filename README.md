@@ -28,29 +28,29 @@ Wschat是一个简易的聊天系统，用户需要登录注册。并且已经�
 ![img1](https://github.com/Juanbai7877/Wschat/blob/main/images/img1.png)
 
 
-![img1](C:\Users\17877\Documents\GitHub\Wschat\images\img1.png)
+![img1](https://github.com/Juanbai7877/Wschat/blob/main/images/img2.png)
 
 ### 修改资料
 
-![img3](C:\Users\17877\Documents\GitHub\Wschat\images\img3.png)
+![img3](https://github.com/Juanbai7877/Wschat/blob/main/images/img3.png)
 
-![img4](C:\Users\17877\Documents\GitHub\Wschat\images\img4.png)
+![img4](https://github.com/Juanbai7877/Wschat/blob/main/images/img4.png)
 
 ### 好友与群组
 
-![img6](C:\Users\17877\Documents\GitHub\Wschat\images\img6.png)
+![img6](https://github.com/Juanbai7877/Wschat/blob/main/images/img6.png)
 
-![img7](C:\Users\17877\Documents\GitHub\Wschat\images\img7.png)
+![img7](https://github.com/Juanbai7877/Wschat/blob/main/images/img7.png)
 
-![img8](C:\Users\17877\Documents\GitHub\Wschat\images\img8.png)
+![img8](https://github.com/Juanbai7877/Wschat/blob/main/images/img8.png)
 
 ### 聊天功能
 
-![img10](C:\Users\17877\Documents\GitHub\Wschat\images\img10.png)
+![img10](https://github.com/Juanbai7877/Wschat/blob/main/images/img10.png)
 
 ### 留言板
 
-![img11](C:\Users\17877\Documents\GitHub\Wschat\images\img11.png)
+![img11](https://github.com/Juanbai7877/Wschat/blob/main/images/img11.png)
 
  
 

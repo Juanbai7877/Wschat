@@ -25,7 +25,7 @@ Wschat是一个简易的聊天系统，用户需要登录注册。并且已经�
 
 ### 登录注册：
 
-![img1](\images\img1.png)
+![img1](./images\img1.png)
 
 ![img1](C:\Users\17877\Documents\GitHub\Wschat\images\img1.png)
 

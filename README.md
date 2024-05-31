@@ -25,31 +25,31 @@ Wschat是一个简易的聊天系统，用户需要登录注册。并且已经�
 
 ### 登录注册：
 
-![img](file:///C:/Users/17877/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
+![img1](C:\Users\17877\Documents\GitHub\Wschat\images\img1.png)
 
-![img](file:///C:/Users/17877/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png)
+![img1](C:\Users\17877\Documents\GitHub\Wschat\images\img1.png)
 
 ### 修改资料
 
-![img](file:///C:/Users/17877/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
+![img3](C:\Users\17877\Documents\GitHub\Wschat\images\img3.png)
 
-![img](file:///C:/Users/17877/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png)
+![img4](C:\Users\17877\Documents\GitHub\Wschat\images\img4.png)
 
 ### 好友与群组
 
-![img](file:///C:/Users/17877/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
+![img6](C:\Users\17877\Documents\GitHub\Wschat\images\img6.png)
 
- ![img](file:///C:/Users/17877/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
+![img7](C:\Users\17877\Documents\GitHub\Wschat\images\img7.png)
 
-![img](file:///C:/Users/17877/AppData/Local/Temp/msohtmlclip1/01/clip_image004.png)
+![img8](C:\Users\17877\Documents\GitHub\Wschat\images\img8.png)
 
 ### 聊天功能
 
-![image-20240531152300230](C:\Users\17877\AppData\Roaming\Typora\typora-user-images\image-20240531152300230.png)
+![img10](C:\Users\17877\Documents\GitHub\Wschat\images\img10.png)
 
 ### 留言板
 
-![image-20240531152318576](C:\Users\17877\AppData\Roaming\Typora\typora-user-images\image-20240531152318576.png)
+![img11](C:\Users\17877\Documents\GitHub\Wschat\images\img11.png)
 
  
 
